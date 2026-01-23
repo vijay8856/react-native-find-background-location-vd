@@ -1,24 +1,22 @@
 {
   "name": "react-native-find-background-location-vd",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Android foreground service based background location tracking for React Native",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
-"types": "lib/typescript/commonjs/index.d.ts",
-
+  "types": "lib/typescript/commonjs/index.d.ts",
   "private": false,
-
-"files": [
-  "android/src",
-  "android/build.gradle",
-  "android/gradle.properties",
-  "ios",
-  "lib",
-  "react-native.config.js",
-  "*.podspec",
-  "README.md",
-  "LICENSE"
-],
+  "files": [
+    "android/src",
+    "android/build.gradle",
+    "android/gradle.properties",
+    "ios",
+    "lib",
+    "react-native.config.js",
+    "*.podspec",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
     "build": "bob build",
@@ -27,7 +25,6 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "test": "jest"
   },
-
   "keywords": [
     "react-native",
     "react-native-library",
@@ -35,30 +32,23 @@
     "foreground-service",
     "android"
   ],
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vijay8856/react-native-find-background-location-vd.git"
   },
-
   "author": "Vijay Dhakad <vijaydhakad8871@gmail.com> (https://github.com/vijay8856)",
   "license": "MIT",
-
   "bugs": {
     "url": "https://github.com/vijay8856/react-native-find-background-location-vd/issues"
   },
-
   "homepage": "https://github.com/vijay8856/react-native-find-background-location-vd#readme",
-
   "publishConfig": {
     "access": "public"
   },
-
   "peerDependencies": {
     "react": ">=17",
     "react-native": ">=0.71"
   },
-
   "devDependencies": {
     "@eslint/compat": "^1.3.2",
     "@eslint/eslintrc": "^3.3.1",
@@ -78,21 +68,31 @@
     "react-native-builder-bob": "^0.40.13",
     "typescript": "^5.9.2"
   },
-
-  "workspaces": ["example"],
-
+  "workspaces": [
+    "example"
+  ],
   "packageManager": "yarn@4.11.0",
-
   "react-native-builder-bob": {
     "source": "src",
     "output": "lib",
     "targets": [
-      ["commonjs"],
-      ["module", { "esm": true }],
-      ["typescript", { "project": "tsconfig.build.json" }]
+      [
+        "commonjs"
+      ],
+      [
+        "module",
+        {
+          "esm": true
+        }
+      ],
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
+      ]
     ]
   },
-
   "jest": {
     "preset": "react-native",
     "modulePathIgnorePatterns": [
