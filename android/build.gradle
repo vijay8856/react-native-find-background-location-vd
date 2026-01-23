@@ -25,6 +25,12 @@ buildscript {
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${getExtOrDefault('kotlinVersion')}"
   }
 }
+allprojects {
+  repositories {
+    google()       
+    mavenCentral()
+  }
+}
 
 
 apply plugin: "com.android.library"
@@ -64,4 +70,6 @@ android {
 
 dependencies {
   implementation "com.facebook.react:react-android"
+   api "com.google.android.gms:play-services-location:21.0.1"
+
 }
