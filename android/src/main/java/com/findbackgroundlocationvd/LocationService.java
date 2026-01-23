@@ -34,11 +34,13 @@ public class LocationService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
 
         Notification notification = new Notification.Builder(this, CHANNEL_ID)
-                .setContentTitle("Background Location")
-                .setContentText("Location tracking is active")
-                .setSmallIcon(android.R.drawable.ic_menu_mylocation)
-                .setOngoing(true)
-                .build();
+    .setContentTitle("Background Location")
+    .setContentText("Tracking location in background")
+    .setSmallIcon(android.R.drawable.ic_menu_mylocation)
+    .setOngoing(true)
+    .setCategory(Notification.CATEGORY_SERVICE)
+    .build();
+
 
         startForeground(111, notification);
         startUpdates();
@@ -89,17 +91,21 @@ public class LocationService extends Service {
                 .emit("onLocation", map);
     }
 
-    private void createChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(
-                    CHANNEL_ID,
-                    "Find Background Location VD",
-                    NotificationManager.IMPORTANCE_LOW
-            );
-            getSystemService(NotificationManager.class)
-                    .createNotificationChannel(channel);
-        }
+  private void createChannel() {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        NotificationChannel channel = new NotificationChannel(
+            CHANNEL_ID,
+            "Background Location Tracking",
+            NotificationManager.IMPORTANCE_HIGH // 🔥 IMPORTANT
+        );
+        channel.setDescription("Location tracking is active");
+        channel.setShowBadge(false);
+
+        NotificationManager manager =
+            (NotificationManager) getSystemService(NotificationManager.class);
+        manager.createNotificationChannel(channel);
     }
+}
 
     @Nullable
     @Override
