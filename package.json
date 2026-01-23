@@ -1,12 +1,10 @@
 {
   "name": "react-native-find-background-location-vd",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Android foreground service based background location tracking for React Native",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
-"types": "lib/typescript/commonjs/index.d.ts",
-
-
+  "types": "lib/typescript/commonjs/index.d.ts",
   "private": false,
   "files": [
     "android/src",
