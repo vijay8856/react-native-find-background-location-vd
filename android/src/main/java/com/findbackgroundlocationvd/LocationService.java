@@ -1,6 +1,7 @@
 package com.findbackgroundlocationvd;
 
 import android.app.*;
+import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.os.*;
@@ -47,6 +48,32 @@ public class LocationService extends Service {
 
         return START_STICKY;
     }
+@Override
+public void onTaskRemoved(Intent rootIntent) {
+    Log.d("LocationService", "App removed, scheduling restart");
+
+    Intent restartIntent = new Intent(getApplicationContext(), RestartReceiver.class);
+
+    PendingIntent pendingIntent = PendingIntent.getBroadcast(
+            getApplicationContext(),
+            1,
+            restartIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
+    );
+
+    AlarmManager alarmManager =
+            (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+    alarmManager.setExact(
+            AlarmManager.ELAPSED_REALTIME_WAKEUP,
+            SystemClock.elapsedRealtime() + 5000, // 5 seconds
+            pendingIntent
+    );
+
+    super.onTaskRemoved(rootIntent);
+}
+
+
 
     private void startUpdates() {
         LocationRequest request = LocationRequest.create()

@@ -11,12 +11,16 @@
 <!-- Android 13+ -->
 <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application>
+   
+
      <service
     android:name="com.findbackgroundlocationvd.LocationService"
     android:enabled="true"
     android:exported="false"
     android:foregroundServiceType="location" />
-
+ <receiver
+    android:name=".RestartReceiver"
+    android:exported="false" />
     </application>
 
 </manifest>
