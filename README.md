@@ -6,21 +6,19 @@ This library provides reliable background location updates on Android using a fo
 
 ✅ Android only
 
-❌ iOS not supported (stub only)
+## ⚠️ Android Kill-Mode Behavior
 
-✨ Features
+Android does NOT guarantee background execution after the user force-closes
+the app (swipe away from recent apps).
 
-✅ Foreground service based location tracking
+This library uses a **foreground service**, which:
+- ✅ Works in background
+- ✅ Works with screen off
+- ✅ Works when app is minimized
+- ❌ May stop when app is swiped away (system decision)
 
-✅ Works in background & killed state
-
-✅ Android 14+ compliant
-
-✅ React Native autolinking
-
-✅ Simple JS API
-
-✅ Play Store–safe (with proper disclosure)
+This is expected Android behavior and applies to all apps, including
+Google Maps and Uber, depending on device and OEM settings.
 
 📦 Installation
 npm install react-native-find-background-location-vd
@@ -146,14 +144,12 @@ iOS code is a stub only
 
 No CoreLocation integration
 
-Android only
-
-🧪 Example App
-
 This repository includes a fully working example app:
 
 cd example
 yarn android
+
+
 
 🤝 Contributing
 
@@ -162,6 +158,29 @@ Development workflow
 Sending a pull request
 
 Code of conduct
+
+Android only
+Install app
+
+Grant permissions
+
+Tap Start Location
+
+Show notification
+
+Lock screen → still logs location
+
+Minimize app → still logs
+
+Swipe app away → explain limitation on screen
+🧪 Example App
+
+Demo App Flow
+![Background Location](./images/app_ui.png)
+![On Background Notification For Location](./images/foreground-notification.png)
+
+
+
 
 📄 License
 
