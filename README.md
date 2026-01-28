@@ -1,10 +1,31 @@
+Hyy Devlopers 
+
+
 react-native-find-background-location-vd
 
-📍 Android foreground-service based background location tracking for React Native
+Reliable background location tracking for React Native on Android using a foreground service, designed with Play Store–safe practices and clear behavior guarantees.
 
-This library provides reliable background location updates on Android using a foreground service, fully compatible with Android 10 → Android 14+.
 
-✅ Android only
+✨ Features
+
+1. Foreground service–based background location tracking
+
+2. Works when app is:
+
+3. Minimized
+
+4. In background
+
+5. Screen locked
+
+6. Continuous location updates
+
+7. Play Store compliant (no hidden restarts, no abusive alarms)
+
+8. Simple JS API
+
+9. Does not force background execution after user kills the app (by design)
+
 
 ## ⚠️ Android Kill-Mode Behavior
 
@@ -23,9 +44,7 @@ Google Maps and Uber, depending on device and OEM settings.
 📦 Installation
 npm install react-native-find-background-location-vd
 
-
 or
-
 yarn add react-native-find-background-location-vd
 
 
@@ -100,7 +119,27 @@ export async function requestLocationPermissions() {
   return true;
 }
 
+📡 API Reference
+startLocation(): void
 
+Starts background location tracking using a foreground service.
+
+stopLocation(): void
+
+Stops location tracking and removes the foreground notification.
+
+onLocation(callback): Subscription
+
+Registers a listener for location updates.
+
+onLocation((location) => {
+  console.log(location.latitude, location.longitude);
+});
+
+
+Returns a subscription with .remove().
+
+ 
 👉 Call startLocation() only after permissions are granted.
 
 🔔 Foreground Notification
@@ -151,7 +190,10 @@ yarn android
 
 
 
-🤝 Contributing
+🙌 Contributing
+
+PRs and issues are welcome.
+Please follow Android background execution guidelines.
 
 Development workflow
 
@@ -180,7 +222,7 @@ Demo App Flow
 ![On Background Notification For Location](./images/foreground-notification.png)
 
 
-
+⭐ If this library helps you, please star the repo!
 
 📄 License
 
